@@ -14,15 +14,28 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Ingatlan.init({
-    kategoria: DataTypes.INTEGER,
+    kategoria: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     leiras: DataTypes.STRING,
-    hirdetesDatuma: DataTypes.DATE,
-    tehermentes: DataTypes.BOOLEAN,
+    hirdetesDatuma: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.DATE.NOW
+
+    },
+    tehermentes: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
     ar: DataTypes.INTEGER,
     kepUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Ingatlan',
+    tableName: "ingatlanok",
+    timestamps: false
   });
   return Ingatlan;
 };
