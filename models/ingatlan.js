@@ -37,5 +37,10 @@ module.exports = (sequelize, DataTypes) => {
     tableName: "ingatlanok",
     timestamps: false
   });
+  Ingatlan.associate = function (models) {
+    Ingatlan.belongsTo(models.Kategoria, {
+      foreignKey: 'kategoria'
+    })
+  };
   return Ingatlan;
 };

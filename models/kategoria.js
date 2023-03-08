@@ -25,5 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'Kategoriak',
     timestamps: false
   });
+  Kategoria.associate = function (models) {
+    Kategoria.hasMany(models.Ingatlan, {
+      foreignKey: 'kategoria'
+    })
+  };
   return Kategoria;
 };
